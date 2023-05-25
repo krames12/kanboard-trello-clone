@@ -5,13 +5,17 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "db:seed": "node prisma/seed.ts"
   },
   "dependencies": {
     "@nextui-org/react": "^1.0.0-beta.12",
+    "@prisma/client": "^4.14.1",
     "next": "latest",
+    "next-superjson": "^0.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "superjson": "^1.12.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.4",
@@ -25,5 +29,8 @@
     "prisma": "^4.14.1",
     "ts-node": "^10.9.1",
     "typescript": "4.9.5"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

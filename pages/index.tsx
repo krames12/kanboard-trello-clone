@@ -1,9 +1,11 @@
+import { PrismaClient } from '@prisma/client'
+
 import Head from 'next/head'
 import Image from 'next/image'
 
 import styles from '@/pages/index.module.css'
 
-export default function Home() {
+export default function Home({boards}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -31,4 +33,14 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const primsa = new PrismaClient();
+
+  const boards = await primsa.board.findMany();
+
+  return {
+    props: { boards }
+  }
 }
